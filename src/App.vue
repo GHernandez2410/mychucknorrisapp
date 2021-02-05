@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="VueApp grid__row page-container">
-    <md-app md-mode="reveal">
+  <div id="app" class="VueApp page-container">
+    <md-app md-waterfall md-mode="fixed">
       <md-app-toolbar class="md-primary">
         <md-button class="md-icon-button white-letter" @click="menuVisible = !menuVisible">
           <md-icon>menu</md-icon>
@@ -9,43 +9,49 @@
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible">
-        <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
-
         <md-list>
           <md-list-item>
-            <li>
-              <router-link to="/" tag="li"> 
-                <md-icon>move_to_inbox</md-icon>
-                Home 
-              </router-link>
-            </li>
+            <b-button class="menu-button home-button" block variant="primary" >
+              <li>
+                <router-link to="/" tag="li"> 
+                  <md-icon>move_to_inbox</md-icon>
+                  Home 
+                </router-link>
+              </li>
+            </b-button>
           </md-list-item>
 
           <md-list-item>
-            <li>
-              <router-link to="/categories" tag="li">
-                <md-icon>list</md-icon>
-                Categories
-              </router-link>
-            </li>
+            <b-button class="menu-button" block variant="primary" >
+              <li>
+                <router-link to="/categories" tag="li">
+                  <md-icon>list</md-icon>
+                  Categories
+                </router-link>
+              </li>
+            </b-button>
           </md-list-item>
 
           <md-list-item>
-            <li>
-              <router-link to="/search" tag="li">
-                <md-icon>search</md-icon>
-                Search by text
-              </router-link>
-            </li>
+            <b-button class="menu-button" block variant="primary" >
+              <li>
+                <router-link to="/search" tag="li">
+                  <md-icon>search</md-icon>
+                  Search by text
+                </router-link>
+              </li>
+            </b-button>
           </md-list-item>
 
           <md-list-item>
-            <li>
-              <router-link to="/about" tag="li">
-                <md-icon>info</md-icon>
-                About
-              </router-link>
-            </li>
+            <b-button class="menu-button" block variant="primary" >
+              <li>
+                <router-link to="/about" tag="li">
+                  <md-icon>info</md-icon>
+                  About
+                </router-link>
+              </li>
+            </b-button>
           </md-list-item>
 
         </md-list>
@@ -114,6 +120,21 @@
     text-decoration: none;
     color: seagreen;
     cursor: pointer;
+  }
+  .md-app-drawer {
+    background-color: seagreen;
+    color: #fff
+  }
+  .md-list-item {
+    cursor: pointer;
+  }
+  .menu-button {
+    background-color: rgb(2, 110, 49);
+    color: #fff;
+    border: 1px solid rgb(2, 110, 49);
+  }
+  .home-button {
+    margin-top: 60px;
   }
 </style>
 
