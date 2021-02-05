@@ -18,8 +18,8 @@
             </a>
           </h5>
           <h5>API by icndb.com :
-            <a href="http://api.icndb.com/" target="_blank">
-              http://api.icndb.com/
+            <a href="http://www.icndb.com/api/" target="_blank">
+              http://www.icndb.com/api/
             </a>
           </h5>
           <h5>API by ChuckNorris.io :

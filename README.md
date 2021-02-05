@@ -11,7 +11,7 @@ App built with VueJs
 https://api.chucknorris.io/
 ```
 ```
-https://api.icndb.com/
+http://www.icndb.com/api/
 ```
 
 ## Project setup
@@ -42,6 +42,9 @@ The page will reload if you make edits.
 npm run build
 ```
 
+## Deployment 
+Continuous Deployment from the Git repository using Netlify.
+This means that there is a new deployment per commit in the main branch.
 
 
 
