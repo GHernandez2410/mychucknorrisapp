@@ -1,28 +1,153 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="VueApp grid__row page-container">
+    <md-app md-mode="reveal">
+      <md-app-toolbar class="md-primary">
+        <md-button class="md-icon-button white-letter" @click="menuVisible = !menuVisible">
+          <md-icon>menu</md-icon>
+        </md-button>
+        <span v-if="randomJokes && randomJokes.value" class="md-title white-letter">RANDOM JOKE: {{randomJokes.value}}</span>
+      </md-app-toolbar>
+
+      <md-app-drawer :md-active.sync="menuVisible">
+        <md-toolbar class="md-transparent" md-elevation="0">Navigation</md-toolbar>
+
+        <md-list>
+          <md-list-item>
+            <li>
+              <router-link to="/" tag="li"> 
+                <md-icon>move_to_inbox</md-icon>
+                Home 
+              </router-link>
+            </li>
+          </md-list-item>
+
+          <md-list-item>
+            <li>
+              <router-link to="/categories" tag="li">
+                <md-icon>list</md-icon>
+                Categories
+              </router-link>
+            </li>
+          </md-list-item>
+
+          <md-list-item>
+            <li>
+              <router-link to="/search" tag="li">
+                <md-icon>search</md-icon>
+                Search by text
+              </router-link>
+            </li>
+          </md-list-item>
+
+          <md-list-item>
+            <li>
+              <router-link to="/about" tag="li">
+                <md-icon>info</md-icon>
+                About
+              </router-link>
+            </li>
+          </md-list-item>
+
+        </md-list>
+      </md-app-drawer>
+
+      <md-app-content>
+        <div v-show="isLoading">
+          <md-progress-spinner :md-diameter="30" :md-stroke="3" md-mode="indeterminate"></md-progress-spinner>
+            Loading ...
+          <md-progress-spinner class="md-accent" :md-diameter="30" md-mode="indeterminate"></md-progress-spinner>
+        </div>
+        <div class="main">      
+          <transition name="fade" mode="out-in">
+            <keep-alive>
+              <router-view></router-view>
+            </keep-alive>
+          </transition>
+        </div>      
+      </md-app-content>
+    </md-app>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<style lang="scss" scoped>
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    width: 100%;
+  }
+  .md-progress-spinner {
+    background-color: seagreen;
+    margin: 24px;
+  }
+  .md-progress-spinner svg path { 
+    background-color: seagreen;
+    stroke: seagreen; 
+    }
+  .page-container {
+    height: 100vh;
+  }
+  .md-primary {
+    background-color: seagreen;
+  }
+  .md-app {
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgba(#000, .12);
+  }
 
+  .md-drawer {
+    width: 230px;
+    background-color: white;
+  }
+  .white-letter {
+    color: #fff;
+  }
+  .router-link {
+    text-decoration: 'none';
+    color: black;
+    cursor: pointer;
+  }
+  .li a {
+    text-decoration: none;
+    color: seagreen;
+    cursor: pointer;
+  }
+</style>
+
+<script>
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: 'app',
+  data: () => ({
+    menuVisible: false
+  }),
+  computed: {
+    isLoading () {
+      return this.$store.getters.isLoading
+    },
+    iamChuckNorris () {
+      return this.$store.getters.iamChuckNorris
+    },
+    randomJokes () {
+      return this.$store.getters.randomJokes
+    }
+  },
+   created () {
+
+  },
+  methods: {
+    generateJokes: function () {
+      this.$store.dispatch('getRandomJokes')
+    }
+  },
+  mounted () {
+    this.$store.commit('setTabActive', 'random')
+    this.generateJokes()
+    window.setInterval(() => {
+      this.generateJokes()
+    }, 30000)
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
