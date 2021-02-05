@@ -156,3 +156,9 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+.b-table{
+  margin-top: 60px;
+}
+</style>
