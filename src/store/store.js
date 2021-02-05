@@ -1,10 +1,9 @@
 import axios from 'axios'
 let basePath = `https://api.chucknorris.io/`
-let CNDb = `http://api.icndb.com/`
+let CNDb = `https://api.icndb.com/`
 
 const defaultJokeObj = {
   'category': null,
-  'icon_url': 'https://assets.chucknorris.host/img/avatar/chuck-norris.png',
   'id': '',
   'url': '',
   'value': ''
@@ -72,7 +71,7 @@ export const actions = {
   getRandomListOfJokes ({commit}) {
     console.log('calling action getRandomListOfJokes()')
     commit('setLoading', true)
-    axios.get(`${CNDb}/jokes/random/50`)
+    axios.get(`${CNDb}jokes/random/50`)
       .then(function (response) {
         console.log('response ', response)
         commit('setLoading', false)
