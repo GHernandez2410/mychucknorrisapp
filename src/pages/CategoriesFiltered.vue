@@ -63,4 +63,7 @@ export default {
 .md-button {
   margin-top: 20px;
 }
+.md-card{
+  margin-top: 20px;
+}
 </style>

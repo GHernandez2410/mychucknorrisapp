@@ -1,10 +1,12 @@
 <template>
-  <div class="categories">
-    <div class="category"
+  <div>
+    <div 
         v-for="cat in categories" 
         :key="cat.id"
-        @click="setCategoryJokes(cat)">
-      {{ cat }}
+        >
+        <b-button class="category" block variant="primary" @click="setCategoryJokes(cat)">
+        {{ cat }}
+        </b-button>
     </div>
   </div>
 </template>
@@ -38,26 +40,12 @@ export default {
     this.getCategories()
   }
 }
-
 </script>
 
 <style lang="scss" scoped>
-.categories{
-  margin: 20px 0;
-}
 .category{
-  display: block;
-  padding: 15px 20px;
-  margin-bottom: 5px;
-  text-transform: uppercase;
   background-color: seagreen ;
   color: #fff;
-  cursor: pointer;
-
-  i{
-    float: right;
-    font-size: 16px;
-    margin-top: -4px;
-  }
+  margin-top: 20px;
 }
 </style>
