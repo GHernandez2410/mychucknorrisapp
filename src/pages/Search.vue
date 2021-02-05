@@ -1,15 +1,36 @@
 <template>
   <div>
-    <div class="search">
+    <!-- <div class="search">
       <md-field class="search-text">
-      <label class="search-label">Type to search here!</label>
+      <label class="search-label">Type more than 3 letters to search here!</label>
       <md-input v-model="searchText"></md-input>
       <md-button class="md-primary search-btn" @click="searchJokes">
         <md-icon>search</md-icon>
           Search
       </md-button>
     </md-field>        
-    </div>
+    </div> -->
+
+<div role="group">
+    <b-form-input
+      id="input-live"
+      v-model="searchText"
+      :state="isLenghtValid"
+      aria-describedby="input-live-help input-live-feedback"
+      placeholder="Type here to search!"
+      trim
+    ></b-form-input>
+
+    <!-- This will only be shown if the preceding input has an invalid state -->
+    <b-form-invalid-feedback id="input-live-feedback">
+      Enter at least 3 letters
+    </b-form-invalid-feedback>
+
+    <md-button class="md-primary search-btn" @click="searchJokes">
+        <md-icon>search</md-icon>
+          Search
+      </md-button>
+  </div>
 
     <div class="chucklist" v-if="searchCount > 0">
       <div class="chuck" 
@@ -58,6 +79,9 @@ export default {
     },
   },
   computed: {
+    isLenghtValid() {
+      return this.searchText.length > 2 ? true : false
+    },
     searchResultJokes () {
       return this.$store.getters.searchResultJokes
     },
