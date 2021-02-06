@@ -5,7 +5,7 @@
         <md-button class="md-icon-button white-letter" @click="menuVisible = !menuVisible">
           <md-icon>menu</md-icon>
         </md-button>
-        <span v-if="randomJokes && randomJokes.value" class="md-title white-letter">RANDOM JOKE: {{randomJokes.value}}</span>
+        <span v-if="randomJokes && randomJokes.value" class="white-letter">RANDOM JOKE: {{randomJokes.value}}</span>
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible">
@@ -52,6 +52,24 @@
                 </router-link>
               </li>
             </b-button>
+          </md-list-item>
+          
+          <md-list-item>
+            <ShareNetwork
+            network="email"
+            title="Chuck Norris Joke"
+            url=""
+            :description= "randomJokes.value"
+            quote="Did you like the joke?"
+          >
+           <li>
+            <b-button class="menu-button" block variant="primary" >
+                  <md-icon>share</md-icon>
+                  Share header joke
+            </b-button>
+           </li>
+          </ShareNetwork>
+            
           </md-list-item>
 
         </md-list>
