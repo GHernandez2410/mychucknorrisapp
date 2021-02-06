@@ -4,7 +4,7 @@
       <md-ripple>
         <md-card-header>
           <div class="md-title">About</div>
-          <div class="md-subhead">Created with VueJs for eductational propuses by:
+          <div class="md-subhead">Created with VueJs for educational propuses by:
             <a href="https://github.com/GHernandez2410" target="_blank">
               https://github.com/GHernandez2410
             </a>
@@ -12,17 +12,17 @@
         </md-card-header>
 
         <md-card-content>
-          <h5>Source code :
-            <a href="https://github.com/GHernandez2410/mychucknorrisapp.git" target="_blank">
+          <h5>Source code:
+            <a class="align" href="https://github.com/GHernandez2410/mychucknorrisapp.git" target="_blank">
               https://github.com/GHernandez2410/mychucknorrisapp.git
             </a>
           </h5>
-          <h5>API by icndb.com :
+          <h5>API by icndb.com:
             <a href="http://www.icndb.com/api/" target="_blank">
               http://www.icndb.com/api/
             </a>
           </h5>
-          <h5>API by ChuckNorris.io :
+          <h5>API by ChuckNorris.io:
             <a href="https://api.chucknorris.io/" target="_blank">
               https://api.chucknorris.io/
             </a>
@@ -38,3 +38,9 @@
     name: 'AboutPage'
   }
 </script>
+
+<style lang="scss" scoped>
+.align {
+  width: max-content;
+}
+</style>

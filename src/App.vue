@@ -61,10 +61,9 @@
             url=""
             :description= "randomJokes.value"
             quote="Did you like the joke?"
-            
             >
-              <b-button class="menu-button" block variant="primary" tag="li" >
-              <li class="share-button">       
+              <b-button class="menu-button share-button" block variant="primary" tag="li" >
+                <li >       
                   <md-icon>share</md-icon>
                   Share header joke
                 </li>
@@ -145,6 +144,10 @@
   }
   .md-list-item {
     cursor: pointer;
+        display: inline-block;
+  }
+  .md-list-item-content{
+        display: inline-block;
   }
   .menu-button {
     background-color: rgb(2, 110, 49);
@@ -156,6 +159,7 @@
   }
   .share-button {
     display: inline-block;
+    padding-right: 25px;
   }
 </style>
 

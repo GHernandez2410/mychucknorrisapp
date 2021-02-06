@@ -1,17 +1,6 @@
 <template>
   <div>
-    <!-- <div class="search">
-      <md-field class="search-text">
-      <label class="search-label">Type more than 3 letters to search here!</label>
-      <md-input v-model="searchText"></md-input>
-      <md-button class="md-primary search-btn" @click="searchJokes">
-        <md-icon>search</md-icon>
-          Search
-      </md-button>
-    </md-field>        
-    </div> -->
-
-<div role="group">
+  <div role="group">
     <b-form-input
       id="input-live"
       v-model="searchText"
@@ -80,7 +69,7 @@ export default {
   },
   computed: {
     isLenghtValid() {
-      return this.searchText.length > 2 ? true : false
+      return (!this.searchText.length || this.searchText.length > 2) ? true : false
     },
     searchResultJokes () {
       return this.$store.getters.searchResultJokes
